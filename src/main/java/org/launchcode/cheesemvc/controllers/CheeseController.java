@@ -40,4 +40,28 @@ public class CheeseController {
         //redirect to /cheese
         return "redirect:";
     }
+
+    @RequestMapping(value = "delete",method = RequestMethod.GET)
+    public String processDeleteCheeseForm(Model model){
+
+        model.addAttribute("cheeses",cheeses);
+        model.addAttribute("title", "Delete Cheeses");
+
+        return "cheese/delete";
+
+    }
+
+
+
+
+    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    public String processDeleteCheeseForm(@RequestParam ArrayList<String> cheese){
+        for( String cheeseName : cheese){
+            System.out.print(cheeseName);
+            cheeses.remove(cheeseName);
+        }
+        //redirect to /cheese
+        return "redirect:";
+    }
 }
+
