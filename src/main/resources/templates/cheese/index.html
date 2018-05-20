@@ -9,7 +9,7 @@
 
     <ul>
 
-    <li th:each="cheese : ${cheeses}" th:text="${cheese.key + ' Description  ' + cheese.value}"></li>
+    <li th:each="cheese : ${cheeses}" th:text="${cheese.getName() + ' Description  ' + cheese.getDescription()}"></li>
     </ul>
 
 </body>

@@ -11,9 +11,9 @@
 <table>
 
     <tr th:each="cheese : ${cheeses}">
-        <td><input type="checkbox"  th:name="cheese" th:value="${cheese.key}" /></td>
-        <td th:text="${cheese.key}">Key</td>
-        <td th:text="${cheese.value}">Value</td>
+        <td><input type="checkbox"  th:name="cheese" th:value="${cheese.getName()}" /></td>
+        <td th:text="${cheese.getName()}">Key</td>
+        <td th:text="${cheese.getDescription()}">Value</td>
 </table>
 <input type="submit" value="Delete Cheese"/>
 </form>
