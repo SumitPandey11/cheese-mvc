@@ -54,13 +54,11 @@ public class CheeseController {
     }
 
 
-
-
     @RequestMapping(value = "delete",method = RequestMethod.POST)
     public String processDeleteCheeseForm(@RequestParam ArrayList<String> cheese){
         for( String cheeseName : cheese){
             for(Cheese c : cheeses) {
-                System.out.print(c.getName());
+
                 if(c.getName().equals(cheeseName)) {
                     cheeses.remove(c);
                     break;
