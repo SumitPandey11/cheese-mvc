@@ -36,6 +36,8 @@ public class CheeseController {
 
         if(error.hasErrors()){
             model.addAttribute("title","Add Cheese");
+            model.addAttribute("cheeseTypes",CheeseType.values());
+
             return "cheese/add";
         }
         CheeseData.add(newCheese);
@@ -67,15 +69,26 @@ public class CheeseController {
     @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
     public  String displayEntryForm(Model model, @PathVariable int cheeseId){
         model.addAttribute("cheese",CheeseData.getById(cheeseId));
+        model.addAttribute("cheeseTypes",CheeseType.values());
 
         return "cheese/edit";
     }
 
-    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.POST)
-    public String processEditForm(@RequestParam int cheeseId, String name, String description){
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.POST )
+    public String processEditForm(@RequestParam int cheeseId, String name, String description, @ModelAttribute @Valid  Cheese newCheese, Errors error, Model model){
+        if(error.hasErrors()){
+            model.addAttribute("title","Edit Cheese");
+            model.addAttribute("cheeseTypes",CheeseType.values());
+
+            return "/cheese/edit";
+        }
+
+
         Cheese editCheese = CheeseData.getById(cheeseId);
-        editCheese.setName(name);
-        editCheese.setDescription(description);
+        //editCheese = newCheese;
+        editCheese.setName(newCheese.getName());
+        editCheese.setDescription(newCheese.getDescription());
+        editCheese.setRating(newCheese.getRating());
 
         return "redirect:/cheese";
     }
