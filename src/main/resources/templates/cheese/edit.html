@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
         <label th:for="rating">Rating</label>
-        <input class="form-control" th:field="*{rating}"/>
+        <input class="form-control" type="number" th:field="*{rating}"/>
         <span th:errors="*{rating}" class="error"></span>
 
     </div>
