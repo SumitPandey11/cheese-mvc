@@ -1,6 +1,8 @@
 package org.launchcode.cheesemvc.controllers;
 
 import org.launchcode.cheesemvc.models.User;
+import org.launchcode.cheesemvc.models.data.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,6 +15,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("user")
 public class UserController {
+
+    @Autowired
+    private UserDao userDao;
 
     @RequestMapping(value="")
     public String index(Model model){
@@ -37,7 +42,9 @@ public class UserController {
 
         String message = "";
         message = " Welcome " + user.getUsername();
+        userDao.save(user);
         model.addAttribute("message", message);
+        model.addAttribute("user", user);
         return "user/index";
 
         /*if(user.getPassword() != null && verify != null ) {

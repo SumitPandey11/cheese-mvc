@@ -4,7 +4,7 @@
 <body class="container">
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${'Edit Cheese ' + cheese.name +'(id=' + cheese.cheeseId + ')'}">Default Title</h1>
+<h1 th:text="${'Edit Cheese ' + cheese.name +'(id=' + cheese.id + ')'}">Default Title</h1>
 
 
 
@@ -35,7 +35,7 @@
 
         </select>
     </div>
-    <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId"/>
+    <input type="hidden" th:value="${cheese.id}" name="id"/>
     <input type="submit" value="Edit Cheese"/>
 
 </form>

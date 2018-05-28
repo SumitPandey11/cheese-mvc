@@ -5,6 +5,9 @@
 <nav th:replace="fragments :: navigation"></nav>
 <h1 th:text="${message}"></h1>
 <body>
-Hello
+
+<div th:text="${ ' Welcome  ' + user.username  }">
+
+</div>
 </body>
 </html>
